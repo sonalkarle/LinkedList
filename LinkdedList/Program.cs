@@ -75,39 +75,40 @@ namespace Linklistassignment
             }
             Console.WriteLine($"Added {value} at end of the linkedlist");
         }
-        public void DeleteNodeAtFirst()
+        public void DeleteNodeAtLast()
         {
             if (this.head == null)
             {
-                Console.WriteLine("Nothing to delete");
+                Console.WriteLine("Nothing To Delete");
                 return;
             }
-
-            Node temp = this.head;
-            this.head = this.head.next;
-
-            Console.WriteLine("Removed from linkedlist :" + temp.data);
+            Node temp = head;
+            while (temp.next.next != null)
+            {
+                temp = temp.next;
+            }
+            temp.next = null;
         }
 
-    }
 
 
 
 
-    class Program
-    {
-        
-        static void Main(string[] args)
-
+        class Program
         {
-            /// UC2: Adding new values in linked list
-            LinkedList linkedListForBetweenDemo = new LinkedList();
 
-            Console.WriteLine("Delete First element demo");
-            linkedListForBetweenDemo.Display();
-            linkedListForBetweenDemo.DeleteNodeAtFirst();
-           
-            linkedListForBetweenDemo.Display();
-        }
+                 static void Main(string[] args)
+
+                 {
+                  /// UC2: Adding new values in linked list
+                     LinkedList linkedListForEndDemo = new LinkedList();
+
+                     Console.WriteLine("Delete Last element demo");
+                     linkedListForEndDemo.Display();
+                     linkedListForEndDemo.DeleteNodeAtLast();
+
+                      linkedListForEndDemo.Display();
+
+        }        } 
     }
 }
