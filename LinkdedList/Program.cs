@@ -13,7 +13,10 @@ namespace DataStructuresAssignment
             this.data = data;
             this.next = null;
         }
+
+
     }
+
     class LinkedList
     {
         public Node head;
@@ -41,24 +44,39 @@ namespace DataStructuresAssignment
                 temp = temp.next;
             }
         }
-
+        public void AddNodeAtStart(int value)
+        {
+            Node newNode = new Node(value);
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                newNode.next = head;
+                head = newNode;
+            }
+            Console.WriteLine($"Added {value} at start of the linkedlist");
+        }
     }
+
+
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            //UC1
-            LinkedList staticlinkedList = new LinkedList();
-            Node node56 = new Node(56);
-            Node node30 = new Node(30);
-            Node node70 = new Node(70);
-            node56.next = node30;
-            node30.next = node70;
-            staticlinkedList.head = node56;
-            staticlinkedList.Display();
 
+            Console.WriteLine("Add Node At Start Demo");
+            LinkedList linkedListForStartDemo = new LinkedList();
+            linkedListForStartDemo.AddNodeAtStart(70);
+            linkedListForStartDemo.AddNodeAtStart(30);
+            linkedListForStartDemo.AddNodeAtStart(56);
+            linkedListForStartDemo.Display();
 
         }
     }
 }
+
     
