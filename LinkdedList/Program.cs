@@ -6,6 +6,9 @@ namespace DataStructuresAssignment
 {
     public class Node
     {
+        /// <summary>
+        /// Node class create to intialised the storing location and new location
+        /// </summary>
         public int data;
         public Node next;
         public Node(int data)
@@ -19,6 +22,9 @@ namespace DataStructuresAssignment
 
     class LinkedList
     {
+        /// <summary>
+        /// Linkedlise class created to intialised node position
+        /// </summary>
         public Node head;
 
         public LinkedList()
@@ -27,6 +33,7 @@ namespace DataStructuresAssignment
         }
         public void Display()
         {
+            /// Diplay the stored values
             if (head == null)
             {
                 Console.WriteLine("Nothing to display");
@@ -44,8 +51,10 @@ namespace DataStructuresAssignment
                 temp = temp.next;
             }
         }
-        public void AddNodeAtStart(int value)
+        public void AddNodeAtEnd(int value)
         {
+            /*Add to  End used to display the
+             result from end */
             Node newNode = new Node(value);
             if (head == null)
             {
@@ -53,11 +62,17 @@ namespace DataStructuresAssignment
             }
             else
             {
-                newNode.next = head;
-                head = newNode;
+                Node temp = head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = newNode;
+
             }
-            Console.WriteLine($"Added {value} at start of the linkedlist");
+            Console.WriteLine($"Added {value} at end of the linkedlist");
         }
+
     }
 
 
@@ -66,17 +81,17 @@ namespace DataStructuresAssignment
     class Program
     {
         static void Main(string[] args)
+
         {
+            /// UC2: Adding new values in linked list
 
             Console.WriteLine("Add Node At Start Demo");
             LinkedList linkedListForStartDemo = new LinkedList();
-            linkedListForStartDemo.AddNodeAtStart(70);
-            linkedListForStartDemo.AddNodeAtStart(30);
-            linkedListForStartDemo.AddNodeAtStart(56);
+            linkedListForStartDemo.AddNodeAtEnd(70);
+            linkedListForStartDemo.AddNodeAtEnd(30);
+            linkedListForStartDemo.AddNodeAtEnd(56);
             linkedListForStartDemo.Display();
 
         }
     }
 }
-
-    
