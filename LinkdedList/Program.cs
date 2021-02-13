@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructuresAssignment
+namespace Linklistassignment
 {
     public class Node
     {
@@ -17,7 +17,10 @@ namespace DataStructuresAssignment
             this.next = null;
         }
 
-
+        public Node(int data, Node next) : this(data)
+        {
+            this.next = next;
+        }
     }
 
     class LinkedList
@@ -72,6 +75,19 @@ namespace DataStructuresAssignment
             }
             Console.WriteLine($"Added {value} at end of the linkedlist");
         }
+        public void DeleteNodeAtFirst()
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("Nothing to delete");
+                return;
+            }
+
+            Node temp = this.head;
+            this.head = this.head.next;
+
+            Console.WriteLine("Removed from linkedlist :" + temp.data);
+        }
 
     }
 
@@ -80,18 +96,18 @@ namespace DataStructuresAssignment
 
     class Program
     {
+        
         static void Main(string[] args)
 
         {
             /// UC2: Adding new values in linked list
+            LinkedList linkedListForBetweenDemo = new LinkedList();
 
-            Console.WriteLine("Add Node At Start Demo");
-            LinkedList linkedListForStartDemo = new LinkedList();
-            linkedListForStartDemo.AddNodeAtEnd(70);
-            linkedListForStartDemo.AddNodeAtEnd(30);
-            linkedListForStartDemo.AddNodeAtEnd(56);
-            linkedListForStartDemo.Display();
-
+            Console.WriteLine("Delete First element demo");
+            linkedListForBetweenDemo.Display();
+            linkedListForBetweenDemo.DeleteNodeAtFirst();
+           
+            linkedListForBetweenDemo.Display();
         }
     }
 }
