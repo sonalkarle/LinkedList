@@ -23,7 +23,8 @@ namespace Linklistassignment
         }
     }
 
-    class LinkedList
+    public class LinkedList
+
     {
         /// <summary>
         /// Linkedlise class created to intialised node position
@@ -54,41 +55,22 @@ namespace Linklistassignment
                 temp = temp.next;
             }
         }
-        public void AddNodeAtEnd(int value)
-        {
-            /*Add to  End used to display the
-             result from end */
-            Node newNode = new Node(value);
-            if (head == null)
-            {
-                head = newNode;
-            }
-            else
-            {
-                Node temp = head;
-                while (temp.next != null)
-                {
-                    temp = temp.next;
-                }
-                temp.next = newNode;
 
-            }
-            Console.WriteLine($"Added {value} at end of the linkedlist");
-        }
-        public void DeleteNodeAtLast()
+        public bool Search(int value)
         {
-            if (this.head == null)
+            Node temp = this.head;
+            while (temp != null)
             {
-                Console.WriteLine("Nothing To Delete");
-                return;
-            }
-            Node temp = head;
-            while (temp.next.next != null)
-            {
+                if (temp.data == value)
+                {
+                    Console.WriteLine("Data Found");
+                    return true;
+                }
                 temp = temp.next;
             }
-            temp.next = null;
+            return false;
         }
+
 
 
 
@@ -97,18 +79,22 @@ namespace Linklistassignment
         class Program
         {
 
-                 static void Main(string[] args)
 
-                 {
-                  /// UC2: Adding new values in linked list
-                     LinkedList linkedListForEndDemo = new LinkedList();
+            static void Main(string[] args)
 
-                     Console.WriteLine("Delete Last element demo");
-                     linkedListForEndDemo.Display();
-                     linkedListForEndDemo.DeleteNodeAtLast();
+            {
+                //UC7
+                LinkedList staticlinkedList = new LinkedList();
 
-                      linkedListForEndDemo.Display();
+                Console.WriteLine("Search for Node 30");
+                staticlinkedList.Display();
+                if (staticlinkedList.Search(30))
+                {
+                    Console.WriteLine("Node found");
+                }
 
-        }        } 
+            }
+        }
     }
 }
+                     
