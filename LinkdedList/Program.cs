@@ -56,19 +56,44 @@ namespace Linklistassignment
             }
         }
 
-        public bool Search(int value)
+        public void AddNodeAtEnd(int value)
         {
-            Node temp = this.head;
-            while (temp != null)
+            Node newNode = new Node(value);
+            if (head == null)
             {
-                if (temp.data == value)
-                {
-                    Console.WriteLine("Data Found");
-                    return true;
-                }
-                temp = temp.next;
+                head = newNode;
             }
-            return false;
+            else
+            {
+                Node temp = head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = newNode;
+
+            }
+            Console.WriteLine($"Added {value} at end of the linkedlist");
+        }
+        public void AddNodeAfterNode(int nodeValue, int addAfterThisValue)
+        {
+            Node newNode = new Node(nodeValue);
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                Node temp = head;
+                while (temp.data != addAfterThisValue)
+                {
+                    temp = temp.next;
+                }
+                newNode.next = temp.next;
+                temp.next = newNode;
+
+            }
+            Console.WriteLine($"Added {nodeValue} at in between");
         }
 
 
@@ -83,16 +108,13 @@ namespace Linklistassignment
             static void Main(string[] args)
 
             {
-                //UC7
-                LinkedList staticlinkedList = new LinkedList();
-
-                Console.WriteLine("Search for Node 30");
-                staticlinkedList.Display();
-                if (staticlinkedList.Search(30))
-                {
-                    Console.WriteLine("Node found");
-                }
-
+                Console.WriteLine("Add Node After Node ");
+                LinkedList linkedListForNodeAfterNode = new LinkedList();
+                linkedListForNodeAfterNode.AddNodeAtEnd(56);
+                linkedListForNodeAfterNode.AddNodeAtEnd(30);
+                linkedListForNodeAfterNode.AddNodeAtEnd(70);
+                linkedListForNodeAfterNode.AddNodeAfterNode(40, 30);
+                linkedListForNodeAfterNode.Display();
             }
         }
     }
