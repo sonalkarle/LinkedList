@@ -56,24 +56,33 @@ namespace Linklistassignment
             }
         }
 
-        public void AddNodeAtEnd(int value)
+       
+        public void DeleteNodeWithValue(int value)
         {
-            Node newNode = new Node(value);
             if (head == null)
             {
-                head = newNode;
+                Console.WriteLine("Nothing to delete");
             }
-            else
+            Node prev = this.head;
+            Node pointsToValue = this.head;
+            while (pointsToValue.data != value)
             {
-                Node temp = head;
-                while (temp.next != null)
+                if (pointsToValue == null)
                 {
-                    temp = temp.next;
+                    break;
                 }
-                temp.next = newNode;
-
+                pointsToValue = pointsToValue.next;
             }
-            Console.WriteLine($"Added {value} at end of the linkedlist");
+            while (prev.next.data != value)
+            {
+                if (prev == null)
+                {
+                    break;
+                }
+                prev = prev.next;
+            }
+            prev.next = pointsToValue.next;
+
         }
         public void AddNodeAfterNode(int nodeValue, int addAfterThisValue)
         {
@@ -101,6 +110,8 @@ namespace Linklistassignment
 
 
 
+
+
         class Program
         {
 
@@ -108,12 +119,9 @@ namespace Linklistassignment
             static void Main(string[] args)
 
             {
-                Console.WriteLine("Add Node After Node ");
-                LinkedList linkedListForNodeAfterNode = new LinkedList();
-                linkedListForNodeAfterNode.AddNodeAtEnd(56);
-                linkedListForNodeAfterNode.AddNodeAtEnd(30);
-                linkedListForNodeAfterNode.AddNodeAtEnd(70);
-                linkedListForNodeAfterNode.AddNodeAfterNode(40, 30);
+                Console.WriteLine("Delete From Middle");
+                linkedListForNodeAfterNode.Display();
+                linkedListForNodeAfterNode.DeleteNodeWithValue(40);
                 linkedListForNodeAfterNode.Display();
             }
         }
